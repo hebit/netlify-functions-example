@@ -7,6 +7,11 @@ exports.handler = async (event, context) => {
     .then((response) => response.json())
     .then((data) => ({
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+      },
       body: JSON.stringify(data),
     }))
     .catch((error) => ({ statusCode: 422, body: String(error) }));
